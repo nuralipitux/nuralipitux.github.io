@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nursultan.fun - The Best</title>
-    <link rel="stylesheet" href="styles.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -60,6 +59,38 @@
         a:hover {
             text-decoration: underline;
         }
+        .calculator {
+            text-align: center;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+        }
+        .calculator input {
+            width: calc(50% - 10px);
+            padding: 0.5rem;
+            margin: 5px;
+            font-size: 1rem;
+        }
+        .calculator button {
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .calculator button:hover {
+            background-color: #0056b3;
+        }
+        .calculator #result {
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            color: #333;
+        }
     </style>
 </head>
 <body>
@@ -81,10 +112,53 @@
             <h2>Кодер</h2>
             <p>Весь код разработан лучшим разработчиком - <a href="https://nursultan.tech" target="_blank">Nursultan.tech</a>.</p>
         </section>
+
+        <section class="calculator">
+            <h2>Калькулятор</h2>
+            <input type="number" id="num1" placeholder="Число 1">
+            <input type="number" id="num2" placeholder="Число 2">
+            <br>
+            <button onclick="calculate('+')">Сложить</button>
+            <button onclick="calculate('-')">Вычесть</button>
+            <button onclick="calculate('*')">Умножить</button>
+            <button onclick="calculate('/')">Делить</button>
+            <div id="result">Результат: </div>
+        </section>
     </main>
 
     <footer>
         <p>&copy; 2024 Nursultan.fun. Все права защищены.</p>
     </footer>
+
+    <script>
+        function calculate(operation) {
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            let result;
+
+            if (isNaN(num1) || isNaN(num2)) {
+                result = 'Пожалуйста, введите оба числа!';
+            } else {
+                switch (operation) {
+                    case '+':
+                        result = num1 + num2;
+                        break;
+                    case '-':
+                        result = num1 - num2;
+                        break;
+                    case '*':
+                        result = num1 * num2;
+                        break;
+                    case '/':
+                        result = num2 !== 0 ? num1 / num2 : 'Деление на ноль невозможно!';
+                        break;
+                    default:
+                        result = 'Неизвестная операция';
+                }
+            }
+
+            document.getElementById('result').textContent = `Результат: ${result}`;
+        }
+    </script>
 </body>
 </html>
