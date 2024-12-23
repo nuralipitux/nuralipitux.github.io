@@ -110,7 +110,25 @@
             opacity: 0;
             animation: fadeIn 1s ease forwards;
         }
-
+        .language-selector {
+            text-align: center;
+            margin: 1rem;
+        }
+        .language-selector button {
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            margin: 0 0.5rem;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .language-selector button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
         @keyframes fadeInDown {
             from {
                 opacity: 0;
@@ -121,7 +139,6 @@
                 transform: translateY(0);
             }
         }
-
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -132,7 +149,6 @@
                 transform: translateY(0);
             }
         }
-
         @keyframes zoomIn {
             from {
                 opacity: 0;
@@ -143,7 +159,6 @@
                 transform: scale(1);
             }
         }
-
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -157,25 +172,35 @@
 <body>
     <header>
         <h1>Welcome to Nursultan.fun</h1>
+        <div class="language-selector">
+            <button onclick="setLanguage('en')">English</button>
+            <button onclick="setLanguage('ru')">Русский</button>
+        </div>
     </header>
     <main>
-        <section id="best-client">
+        <section id="best-client" data-en="Nursultan.fun - The Best Client" data-ru="Nursultan.fun - лучший клиент">
             <h2>Nursultan.fun - лучший клиент</h2>
-            <p>этот сайт будет развиваться</p>
+            <p data-en="Here you will find the best service and incredible opportunities!" data-ru="Здесь вы найдете лучшее обслуживание и невероятные возможности!">
+                Здесь вы найдете лучшее обслуживание и невероятные возможности!
+            </p>
         </section>
 
-        <section id="nuraly">
-            <h2>Нурали плюшевый петух</h2>
-            <p>Я не шучу, это факт</p>
+        <section id="nuraly" data-en="Nuraly Loser" data-ru="Нурали Питух">
+            <h2>Нурали Питух</h2>
+            <p data-en="We are not joking, this is a fact!" data-ru="Мы не шутим, это факт!">
+                Мы не шутим, это факт!
+            </p>
         </section>
 
-        <section id="coder">
+        <section id="coder" data-en="Coder" data-ru="Кодер">
             <h2>Кодер</h2>
-            <p>Весь код разработан лучшим разработчиком - <a href="https://nursultan.tech" target="_blank">Nursultan.tech</a>.</p>
+            <p data-en="All code is developed by the best developer - <a href='https://nursultan.tech' target='_blank'>Nursultan.tech</a>." data-ru="Весь код разработан лучшим разработчиком - <a href='https://nursultan.tech' target='_blank'>Nursultan.tech</a>.">
+                Весь код разработан лучшим разработчиком - <a href="https://nursultan.tech" target="_blank">Nursultan.tech</a>.
+            </p>
         </section>
 
         <section class="calculator">
-            <h2>Калькулятор</h2>
+            <h2 data-en="Calculator" data-ru="Калькулятор">Калькулятор</h2>
             <input type="number" id="num1" placeholder="Число 1">
             <input type="number" id="num2" placeholder="Число 2">
             <br>
@@ -188,42 +213,16 @@
     </main>
 
     <footer>
-        <p>&copy; 2024 Nursultan.fun. Все права защищены.</p>
+        <p data-en="© 2024 Nursultan.fun. All rights reserved." data-ru="© 2024 Nursultan.fun. Все права защищены.">
+            © 2024 Nursultan.fun. Все права защищены.
+        </p>
     </footer>
 
     <script>
-        function calculate(operation) {
-            const num1 = parseFloat(document.getElementById('num1').value);
-            const num2 = parseFloat(document.getElementById('num2').value);
-            let result;
-
-            if (isNaN(num1) || isNaN(num2)) {
-                result = 'Пожалуйста, введите оба числа!';
-            } else {
-                switch (operation) {
-                    case '+':
-                        result = num1 + num2;
-                        break;
-                    case '-':
-                        result = num1 - num2;
-                        break;
-                    case '*':
-                        result = num1 * num2;
-                        break;
-                    case '/':
-                        result = num2 !== 0 ? num1 / num2 : 'Деление на ноль невозможно!';
-                        break;
-                    default:
-                        result = 'Неизвестная операция';
-                }
-            }
-
-            const resultDiv = document.getElementById('result');
-            resultDiv.textContent = `Результат: ${result}`;
-            resultDiv.style.opacity = 0;
-            setTimeout(() => {
-                resultDiv.style.opacity = 1;
-            }, 100);
+        function setLanguage(lang) {
+            document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+                el.textContent = el.getAttribute('data-' + lang);
+            });
         }
     </script>
 </body>
