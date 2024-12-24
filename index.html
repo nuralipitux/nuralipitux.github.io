@@ -24,37 +24,6 @@
             top: 0;
             z-index: 1000;
         }
-        .menu {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            width: 30px;
-            height: 25px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            cursor: pointer;
-        }
-        .menu div {
-            height: 4px;
-            background: #fff;
-            border-radius: 2px;
-            transition: 0.3s;
-        }
-        .menu-options {
-            display: none;
-            position: absolute;
-            top: 40px;
-            left: 10px;
-            background-color: #1e1e1e;
-            border: 1px solid #333;
-            padding: 1rem;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-        }
-        .menu:hover .menu-options {
-            display: block;
-        }
         h1 {
             margin: 0;
             font-size: 2.5rem;
@@ -232,12 +201,6 @@
 </head>
 <body>
     <header>
-        <div class="menu">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div class="menu-options"></div>
-        </div>
         <h1 data-en="Welcome to Nursultan.fun" data-ru="Добро пожаловать на Nursultan.fun">Добро пожаловать на Nursultan.fun</h1>
         <div class="language-selector">
             <button onclick="setLanguage('en')">English</button>
@@ -245,4 +208,14 @@
         </div>
     </header>
     <main>
-        <section id="best-client" data-en="<h2>Nursultan - The Best Client</h2><p>Find best deals and opportunities here!</p>" data-ru="<h2>Nursultan - Лучший клиент</h2><p>
+        <section id="best-client" data-en="<h2>Nursultan - The Best Client</h2><p>Find best deals and opportunities here!</p>" data-ru="<h2>Nursultan - Лучший клиент</h2><p>Здесь вы найдете лучшие предложения и возможности!</p>">
+            <h2>Nursultan - Лучший клиент</h2>
+            <p>Здесь вы найдете лучшие предложения и возможности!</p>
+        </section>
+
+        <section id="nuraly" data-en="<h2>Nuraly Loser</h2><p>We are not joking, this is a fact!</p>" data-ru="<h2>Нурали Питух</h2><p>Мы не шутим, это факт!</p>">
+            <h2>Нурали Питух</h2>
+            <p>Мы не шутим, это факт!</p>
+        </section>
+
+        <section id="coder" data-en="<h2>Coder</h2><p>All code is developed by the best developer - <a href='https://nursultan.tech' target='_blank'>Nursultan.tech</a>.</p>" data-ru="<h2>Кодер</h2><p>Весь код разработан лучшим разработчиком - <a href='https://nursultan.tech' target
